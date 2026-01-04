@@ -17,7 +17,50 @@ The application is structured as a collection of modular functions orchestrating
 
 ## 3. Process Flowchart
 The following Mermaid diagram illustrates the execution flow of the application:
-![System Architecture Flowchart](assets/system_architecture.png)
+```mermaid
+flowchart TD
+    Start([Start Application]) --> Init[Initialize Dependencies]
+    Init --> MainMenu{Display Main Menu}
+    
+    MainMenu -->|Option 1| AutoGen[Auto Generate Mode]
+    MainMenu -->|Option 2| CustomGen[Interactive Mode]
+    MainMenu -->|Option 3| Exit([Exit Application])
+    
+    subgraph Auto_Generation_Flow
+        AutoGen --> SetDefaults["Set Default Params\n(Length=12, All Chars)"]
+        SetDefaults --> GenLoop1[Generate 5 Passwords]
+        GenLoop1 --> CallGen1[[generate_password]]
+    end
+    
+    subgraph Custom_Generation_Flow
+        CustomGen --> GetPrefs[Get User Preferences]
+        GetPrefs --> Validate{Validate Input}
+        Validate -- Invalid --> GetPrefs
+        Validate -- Valid --> GenLoop2[Generate N Passwords]
+        GenLoop2 --> CallGen2[[generate_password]]
+    end
+    
+    subgraph Output_Handling
+        CallGen1 & CallGen2 --> Display[Display Passwords]
+        Display --> Copy{Copy to Clipboard?}
+        Copy -- Yes --> Clipboard[pyperclip.copy]
+        Copy -- No --> Save{Save to File?}
+        Save -- Yes --> FileIO[save_to_file]
+        Save -- No --> FinalMsg
+        Clipboard --> Save
+    end
+    
+    FileIO --> FinalMsg[Display Success Message]
+    FinalMsg --> End([End Session])
+
+    subgraph Core_Logic
+        CallGen2 --> BuildPool[Build Character Pool]
+        BuildPool --> CheckPool{Pool Empty?}
+        CheckPool -- Yes --> Error[Return Error]
+        CheckPool -- No --> Randomize[Random Selection Loop]
+        Randomize --> ReturnPwd[Return Password String]
+    end
+```
 
 ## 4. Key Dependencies
 *   **Python 3.x**
