@@ -27,25 +27,25 @@ sequenceDiagram
     participant Player2
     participant DB as MongoDB
 
-    Note over Player1, Player2: Matchmaking Phase
-    Player1->>Server: emit('join_matchmaking')
-    Player2->>Server: emit('join_matchmaking')
-    Server->>Server: Match Players()
-    Server->>DB: Create Game Record
-    Server-->>Player1: emit('game_found')
-    Server-->>Player2: emit('game_found')
+    Note over Player1, Player2: Matchmaking
+    Player1->>Server: 'join_matchmaking'
+    Player2->>Server: 'join_matchmaking'
+    Server->>Server: Match Players
+    Server->>DB: New Game Rec
+    Server-->>Player1: 'game_found'
+    Server-->>Player2: 'game_found'
 
-    Note over Player1, Player2: Gameplay Phase
-    Player1->>Server: emit('submit_move', {move: 'rock'})
-    Server-->>Player1: Acknowledge Move (Waiting...)
+    Note over Player1, Player2: Gameplay
+    Player1->>Server: 'submit_move' (rock)
+    Server-->>Player1: Ack (Waiting)
     
-    Player2->>Server: emit('submit_move', {move: 'scissors'})
+    Player2->>Server: 'submit_move' (scissors)
     
-    Server->>Server: Resolve Round (Rock beats Scissors)
-    Server->>DB: Update Game & Stats
+    Server->>Server: Resolve Round
+    Server->>DB: Update Stats
     
-    Server-->>Player1: emit('round_result', {win: true})
-    Server-->>Player2: emit('round_result', {win: false})
+    Server-->>Player1: 'round_result' (Win)
+    Server-->>Player2: 'round_result' (Loss)
 ```
 
 ## 4. System Component Diagram
