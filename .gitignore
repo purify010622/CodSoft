@@ -4,3 +4,81 @@
 
 # Build
 .dist/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.hypothesis/
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+logs/
+test_logs/
+integration_logs/
+
+# Backup files
+integration_backups/
+*.tar.gz
+*.zip
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Media files (large videos)
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Temporary files
+*.tmp
+*.temp
+*~
+password.txt
+debug_auth.py
+test_signup.py
+tasks.json
+
+
+# Dependencies
+node_modules/
+venv/
+env/

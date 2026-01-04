@@ -1,39 +1,49 @@
-# Calculator App
+# 🧮 Professional Python Calculator
 
-A simple calculator built with Streamlit featuring keyboard support.
+**CODSOFT Python Programming Internship - Task 2**
 
-## Features
+Wait... this isn't just a calculator. It's a modern, terminal-based mathematical engine built with Python and the [Rich](https://github.com/Textualize/rich) library. Designed for developers who love the CLI but crave a premium user experience.
 
-- Basic arithmetic operations (addition, subtraction, multiplication, division)
-- Clean, modern UI
-- Keyboard support for quick calculations
-- Click buttons or use keyboard shortcuts
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-## Installation
+## ✨ Features
 
-1. Install dependencies:
+- **Modern TUI (Terminal User Interface)**: Uses `rich` for beautiful, colorful, and formatted output.
+- **History Tracking**: Keeps track of your last 5 calculations in a persistent dashboard.
+- **Scientific Operations**: Not just basic arithmetic - supports Power calculations (`^`) and Modulus (`%`).
+- **Live Feedback**: visual feedback and status spinners during calculation states.
+- **Error Handling**: Graceful error management for invalid inputs or math errors (e.g., division by zero).
+
+## 🚀 Installation
+
+1. **Clone the repository** available in your CodSoft workspace.
+2. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   *(Main dependency: `rich`)*
+
+## 🎮 Usage
+
+Run the calculator directly from your terminal:
+
 ```bash
-pip install -r requirements.txt
+python calculator.py
 ```
 
-## Usage
+### Controls
+- **Select Operation**: Enter the number corresponding to the menu item (1-6).
+- **History**: Automatically displayed at the top of the interface.
+- **Quit**: Enter `Q` to exit the application properly.
 
-Run the calculator:
-```bash
-streamlit run app.py
-```
+## 📸 Screencasts
 
-## Keyboard Shortcuts
+*Make sure to record a video of the terminal running this script for your LinkedIn post! The colorful output looks fantastic in video format.*
 
-- **0-9**: Number input
-- **+, -, *, /**: Operations
-- **Enter or =**: Calculate result
-- **C or Escape**: Clear calculator
-- **Backspace**: Delete last digit
-- **.**: Decimal point
+---
 
-## Files
-
-- `app.py`: Main Streamlit calculator application
-- `calculator.py`: Command-line version
-- `requirements.txt`: Python dependencies
+<p align="center">
+  Made with ❤️ by Sarthak during the CodSoft Internship
+</p>

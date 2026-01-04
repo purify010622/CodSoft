@@ -1,6 +1,8 @@
 # Password Generator
 
-A Python-based interactive password generator that creates strong, random passwords with two convenient modes: Auto Generate for quick password creation and Interactive Mode for full customization.
+**CODSOFT Python Programming Internship - Task 3**
+
+A Python-based interactive password generator that creates strong, cryptographically random passwords with two convenient modes: Auto Generate for quick password creation and Interactive Mode for full customization.
 
 ## Features
 
@@ -17,10 +19,13 @@ A Python-based interactive password generator that creates strong, random passwo
 - **Interactive Clipboard Copy**: Choose whether to copy passwords to clipboard
 - **Optional File Saving**: Save passwords to a text file when needed
 - **Clean Exit**: Program exits after generating passwords
+- **Input Validation**: Comprehensive validation for all user inputs
+- **Error Handling**: Graceful handling of clipboard and file operations
 
 ## Installation
 
-1. Install the required dependencies:
+1. Install Python 3.6 or higher
+2. Install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -50,58 +55,60 @@ Full control over password generation:
 6. Optionally save to file
 7. Program exits automatically
 
-## Example
+## Code Structure
 
+### Core Functions
+- `generate_password()`: Main password generation logic with character pool building
+- `display_menu()`: User interface menu display
+- `get_password_preferences()`: Interactive preference collection
+- `auto_generate_mode()`: Quick password generation with defaults
+- `save_to_file()`: File saving functionality with error handling
+- `main()`: Application entry point and main loop
+
+### Character Sets Used
+- **Lowercase**: `string.ascii_lowercase` (a-z)
+- **Uppercase**: `string.ascii_uppercase` (A-Z)  
+- **Numbers**: `string.digits` (0-9)
+- **Special**: `string.punctuation` (!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)
+
+## Technical Details
+
+- **Language**: Python 3.6+
+- **Dependencies**: 
+  - `pyperclip`: Clipboard operations
+  - `random`: Cryptographically secure random generation
+  - `string`: Character set definitions
+  - `os`: File operations
+- **Security**: Uses `random.choice()` for cryptographically secure password generation
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+
+## Project Structure
 ```
-Welcome to the Password Generator!
-
-==================================================
-       PASSWORD GENERATOR
-==================================================
-1. Auto Generate (Quick)
-2. Interactive Mode (Custom)
-3. Exit
-==================================================
-
-Enter your choice (1-3): 1
-
---- Auto Generate Mode ---
-Generating 5 passwords with default settings:
-  • Length: 12 characters
-  • Character types: All (uppercase, lowercase, numbers, special)
-
-==================================================
-   GENERATED PASSWORDS
-==================================================
-1. K9#mP2$xL5@q
-2. T4!vW7%jN3*s
-3. F1@dC8#gM2$p
-4. R6^bH9&kL3#m
-5. N5*qT8@wP1!x
-==================================================
-
-Copy all passwords to clipboard? (Y/n): y
-✓ All passwords copied to clipboard!
-
-Save passwords to file? (y/N): n
-
-==================================================
-Here are your passwords:
-1. K9#mP2$xL5@q
-2. T4!vW7%jN3*s
-3. F1@dC8#gM2$p
-4. R6^bH9&kL3#m
-5. N5*qT8@wP1!x
-==================================================
-
-Thank you for using Password Generator! Stay secure! 🔒
+password generator/
+├── password_generator.py    # Main application
+├── README.md               # Project documentation  
+├── SYSTEM_ARCHITECTURE.md  # Technical architecture
+└── requirements.txt        # Python dependencies
 ```
 
-## Requirements
+## Security Considerations
 
-- Python 3.6+
-- pyperclip library (for clipboard functionality)
+- **Randomness**: Uses Python's `random` module for secure password generation
+- **Character Pool**: Comprehensive character sets for maximum entropy
+- **No Storage**: Passwords are not stored in memory after generation
+- **User Control**: Full control over character types and length
+- **Clipboard Security**: Optional clipboard usage with user consent
 
-## Security Note
+## Contributing
 
-Generated passwords are cryptographically random and suitable for most use cases. Always store passwords securely using a password manager.
+This project is part of the CODSOFT internship program and demonstrates:
+- Interactive command-line applications
+- User input validation and error handling
+- File I/O operations
+- Clipboard integration
+- Modular function design
+- Security best practices for password generation
+
+## License
+
+This project is for educational purposes as part of the CODSOFT internship program.

@@ -1,0 +1,23 @@
+# SmartConnect Contact Management System Dependencies
+
+# GUI Framework
+customtkinter>=5.2.0
+
+# Property-based testing
+hypothesis>=6.82.0
+
+# Executable building (for production deployment)
+pyinstaller>=5.0.0
+
+# Standard library modules (included with Python)
+# - sqlite3 (database)
+# - tkinter (base GUI)
+# - csv (export functionality)
+# - re (regex validation)
+# - datetime (timestamps)
+# - dataclasses (Contact model)
+# - typing (type hints)
+# - hashlib (password hashing)
+# - threading (background operations)
+# - os (file operations)
+# - sys (system operations)
