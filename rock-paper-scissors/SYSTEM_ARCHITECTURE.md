@@ -51,29 +51,27 @@ sequenceDiagram
 ## 4. System Component Diagram
 
 ```mermaid
-graph TD
+graph LR
     Client[React Frontend]
-    WS[Socket.IO Connection]
-    HTTP[HTTP REST API]
     
-    Server[Flask Backend]
-    SocketHandler[Socket Event Handlers]
-    Auth[Middleware Auth]
+    subgraph Interfaces
+        WS[Socket.IO]
+        HTTP[REST API]
+    end
+    
+    subgraph Backend ["Backend (Flask)"]
+        SocketHandler[Socket Handlers]
+        Auth[Auth Middleware]
+    end
     
     DB[(MongoDB)]
     
-    Client <-->|Realtime Events| WS
-    Client <-->|Profile/Leaderboard| HTTP
+    Client --> WS
+    Client --> HTTP
     
     WS --> SocketHandler
     HTTP --> Auth
     
     SocketHandler --> DB
     Auth --> DB
-    
-    subgraph Backend Services
-        SocketHandler
-        Auth
-        Server
-    end
 ```

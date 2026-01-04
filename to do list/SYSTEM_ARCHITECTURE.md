@@ -25,39 +25,37 @@ TaskFlow is a modern web application for task management. It utilizes a decouple
 ## 3. Architecture Diagram
 
 ```mermaid
-graph TD
+graph LR
     User((User))
     
-    subgraph Frontend_Client ["Frontend (Vite/React)"]
-        UI[React Components]
-        AuthCtx[Auth Context]
-        APIClient[Axios Client]
+    subgraph Frontend ["Frontend (React)"]
+        UI[UI Components]
+        Auth[Auth Context]
+        API[Axios]
     end
     
-    subgraph Cloud_Services
+    subgraph External
         Firebase[Firebase Auth]
     end
     
-    subgraph Backend_Server ["Backend (Flask)"]
+    subgraph Backend ["Backend (Flask)"]
         Routes[API Routes]
-        Logic[Task Manager Logic]
-        DBDriver[MongoDB Manager]
+        Manager[Logic Layer]
+        DB_Driver[PyMongo]
     end
     
-    subgraph Data_Storage
-        MongoDB[(MongoDB Local)]
-    end
+    DB[(MongoDB)]
     
-    User -->|Interacts| UI
-    UI -->|Login| AuthCtx
-    AuthCtx <-->|Verify Creds| Firebase
+    User --> UI
+    UI --> Auth
+    Auth <--> Firebase
     
-    UI -->|Fetch/Update Tasks| APIClient
-    APIClient <-->|HTTP JSON| Routes
+    UI --> API
+    API <--> Routes
     
-    Routes --> Logic
-    Logic --> DBDriver
-    DBDriver <-->|Read/Write| MongoDB
+    Routes --> Manager
+    Manager --> DB_Driver
+    DB_Driver <--> DB
 ```
 
 ## 4. Key Data Flows
