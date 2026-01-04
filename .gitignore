@@ -82,3 +82,6 @@ tasks.json
 node_modules/
 venv/
 env/
+
+# Secrets
+*firebase-adminsdk*.json
